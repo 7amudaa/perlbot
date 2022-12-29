@@ -1,0 +1,2 @@
+# perlbot
+script
