@@ -1093,11 +1093,6 @@ $SIG{'TERM'} = 'IGNORE';
 $SIG{'CHLD'} = 'IGNORE';
 $SIG{'PS'} = 'IGNORE';
 
-use Socket;
-use IO::Socket;
-use IO::Socket::INET;
-use IO::Select;
-
 chdir("$homedir");
 
 $server="$ARGV[0]" if $ARGV[0];
