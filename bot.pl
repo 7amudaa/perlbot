@@ -143,7 +143,7 @@ my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
 my @admins = ("lilmoe");
-my @hostauth = ("lilmoe.*");
+my @hostauth = ("lilmoe.users.undernet.org");
 my @channels = ("#moe");
  
 my $pacotes = 1;
