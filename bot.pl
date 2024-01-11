@@ -68,7 +68,7 @@ my $version = 'irc bot lilmoe.*®';
  
 my @admins = ("lilmoe","moe");
 my @hostauth = ("lilmoe.users.undernet.org");
-my @channels = ("#usla");
+my @channels = ("#gptmoe");
  
 my $pacotes = 1;
  
